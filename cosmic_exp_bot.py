@@ -11,4 +11,5 @@ if __name__ == '__main__':
     print(bot.get_me())
 
     bot.send_message(chat_id=chat_id, text="Hello World!")
+    bot.send_photo(chat_id=chat_id, photo=open('images/epic_nasa_0.jpeg', 'rb'))
 
