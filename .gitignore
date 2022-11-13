@@ -17,6 +17,7 @@ __pycache__/
 *.toml
 *.nix
 replit_zip_error_log.txt
+images/
 
 # Distribution / packaging
 .Python
