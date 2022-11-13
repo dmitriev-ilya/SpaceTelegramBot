@@ -12,9 +12,6 @@ def send_photo_to_chat(image_path, chat_id, bot_token):
 if __name__ == '__main__':
     load_dotenv()
     bot_token = os.environ['TELEGRAM_TOKEN']
-    chat_id = '@cosmo_odisey'
-    image_path = 'images/epic_nasa_0.jpeg'
-
     parser = argparse.ArgumentParser(
         description="""Бот загружает фотографии в указанный Telegram Chat.
         Бот должен быть админом чата.
