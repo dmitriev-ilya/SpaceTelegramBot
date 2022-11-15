@@ -7,9 +7,10 @@ import argparse
 
 
 def fetch_nasa_epic(nasa_api_key):
+    params = {'api_key': nasa_api_key}
     response = requests.get(
         'https://api.nasa.gov/EPIC/api/natural/images',
-        params={'api_key' : nasa_api_key}
+        params=params
     )
     response.raise_for_status()
     for number, image in enumerate(response.json(), start=1):
@@ -18,10 +19,10 @@ def fetch_nasa_epic(nasa_api_key):
 
         image_url = f'https://api.nasa.gov/EPIC/archive/natural/' + \
             f'{data.year}/{data.month}/{data.day}/' + \
-            f'png/{image_name}.png?api_key={nasa_api_key}'
+            f'png/{image_name}.png'
         
         filename = os.path.join('images', f'epic_nasa_{number}.jpeg')
-        main_loader_functions.picture_loader(image_url, filename)
+        main_loader_functions.picture_loader(image_url, filename, params)
         print(f'Photo {number} is load')
     print("It's done!")
 

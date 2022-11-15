@@ -3,8 +3,8 @@ from urllib.parse import urlparse
 from os.path import splitext
 
 
-def picture_loader(url, filename):
-    response = requests.get(url)
+def picture_loader(url, filename, params={"q": ""}):
+    response = requests.get(url, params=params)
     response.raise_for_status()
     with open(filename, 'wb') as file:
         file.write(response.content)
