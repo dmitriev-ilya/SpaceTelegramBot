@@ -15,13 +15,13 @@ def fetch_nasa_apod(count, nasa_api_key):
         params=params
     )
     response.raise_for_status()
-    for number, apod in enumerate(response.json()):
+    for number, apod in enumerate(response.json(), start=1):
         if apod['media_type'] == 'image':
             url = apod['url']
             ext = main_loader_functions.get_extension(url)
             filename = os.path.join('images', f'nasa_apod_{number}{ext}')
             main_loader_functions.picture_loader(url, filename)
-            print(f'Photo {number + 1} is load')
+            print(f'Photo {number} is load')
     print("It's done!")
 
 

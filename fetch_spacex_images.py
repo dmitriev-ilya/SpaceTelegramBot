@@ -9,10 +9,10 @@ def fetch_spacex_launch(launch_id):
     response.raise_for_status()
     images_set = response.json()['links']['flickr']['original']
     if images_set:
-        for number, image_url in enumerate(images_set):
+        for number, image_url in enumerate(images_set, start=1):
             filename = os.path.join('images', f'spacex_{number}.jpeg')
             main_loader_functions.picture_loader(image_url, filename)
-            print(f'Photo {number + 1} is load')
+            print(f'Photo {number} is load')
         
         print("It's done!")
     else:

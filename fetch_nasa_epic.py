@@ -12,7 +12,7 @@ def fetch_nasa_epic(nasa_api_key):
         params={'api_key' : nasa_api_key}
     )
     response.raise_for_status()
-    for number, image in enumerate(response.json()):
+    for number, image in enumerate(response.json(), start=1):
         image_name = image['image']
         data = datetime.datetime.fromisoformat(image['date'])
 
@@ -22,7 +22,7 @@ def fetch_nasa_epic(nasa_api_key):
         
         filename = os.path.join('images', f'epic_nasa_{number}.jpeg')
         main_loader_functions.picture_loader(image_url, filename)
-        print(f'Photo {number + 1} is load')
+        print(f'Photo {number} is load')
     print("It's done!")
 
 
