@@ -20,7 +20,7 @@ def fetch_nasa_epic(nasa_api_key):
             f'{data.year}/{data.month}/{data.day}/' + \
             f'png/{image_name}.png?api_key={nasa_api_key}'
         
-        filename = f'images/epic_nasa_{number}.jpeg'
+        filename = os.path.join('images', f'epic_nasa_{number}.jpeg')
         main_loader_functions.picture_loader(image_url, filename)
         print(f'Photo {number + 1} is load')
     print("It's done!")

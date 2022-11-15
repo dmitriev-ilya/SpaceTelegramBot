@@ -10,7 +10,7 @@ def fetch_spacex_launch(launch_id):
     images_set = response.json()['links']['flickr']['original']
     if images_set:
         for number, image_url in enumerate(images_set):
-            filename = f'images/spacex_{number}.jpeg'
+            filename = os.path.join('images', f'spacex_{number}.jpeg')
             main_loader_functions.picture_loader(image_url, filename)
             print(f'Photo {number + 1} is load')
         

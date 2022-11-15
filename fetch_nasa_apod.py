@@ -19,7 +19,7 @@ def fetch_nasa_apod(count, nasa_api_key):
         if apod['media_type'] == 'image':
             url = apod['url']
             ext = main_loader_functions.get_extension(url)
-            filename = f'images/nasa_apod_{number}{ext}'
+            filename = os.path.join('images', f'nasa_apod_{number}{ext}')
             main_loader_functions.picture_loader(url, filename)
             print(f'Photo {number + 1} is load')
     print("It's done!")
