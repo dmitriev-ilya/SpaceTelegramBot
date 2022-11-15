@@ -4,8 +4,8 @@ import main_loader_functions
 import argparse
 
 
-def fetch_spacex_launch(id): 
-    response = requests.get(f'https://api.spacexdata.com/v5/launches/{id}')
+def fetch_spacex_launch(launch_id): 
+    response = requests.get(f'https://api.spacexdata.com/v5/launches/{launch_id}')
     response.raise_for_status()
     images_set = response.json()['links']['flickr']['original']
     if images_set:
@@ -26,13 +26,13 @@ if __name__ == '__main__':
     )
     parser.add_argument(
         '-i',
-        '--id', 
+        '--launch_id', 
         help='ID запуска, если не указан, скачиваются фото последнего запуска',
         default='latest'
     )
     args = parser.parse_args()
     
-    fetch_spacex_launch(args.id)
+    fetch_spacex_launch(args.launch_id)
 
 
 
