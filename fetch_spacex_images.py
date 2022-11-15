@@ -16,7 +16,7 @@ def fetch_spacex_launch(launch_id):
         
         print("It's done!")
     else:
-        print('No images in this launch')
+        raise Exception('No images in this launch')
 
 
 if __name__ == '__main__':
