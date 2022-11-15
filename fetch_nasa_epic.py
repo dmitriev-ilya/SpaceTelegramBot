@@ -17,9 +17,10 @@ def fetch_nasa_epic(nasa_api_key):
         image_name = image['image']
         data = datetime.datetime.fromisoformat(image['date'])
 
-        image_url = f'https://api.nasa.gov/EPIC/archive/natural/' + \
-            f'{data.year}/{data.month}/{data.day}/' + \
-            f'png/{image_name}.png'
+        image_url = (
+            f'https://api.nasa.gov/EPIC/archive/natural'
+            f'/{data.year}/{data.month}/{data.day}/png/{image_name}.png'
+        )
         
         filename = os.path.join('images', f'epic_nasa_{number}.jpeg')
         main_loader_functions.picture_loader(image_url, filename, params)
