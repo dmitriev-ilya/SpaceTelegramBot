@@ -10,12 +10,12 @@ import argparse
 if __name__ == '__main__':
     load_dotenv()
     bot_token = os.environ['TELEGRAM_TOKEN']
-    chat_id = os.environ['CHAT_ID']
+    chat_id = os.environ['TELEGRAM_CHAT_ID']
     parser = argparse.ArgumentParser(
         description="""Бот последовательно загружает фотографии в Telegram Chat
         из выбранной директории, с задержкой публикации на указанное время.
         Бот должен быть админом чата.
-        Требует TELEGRAM_TOKEN и CHAT_ID, которые должны быть указаны в переменной .env"""
+        Требует TELEGRAM_TOKEN и TELEGRAM_CHAT_ID, которые должны быть указаны в переменной .env"""
     )
     parser.add_argument(
         '-i',
