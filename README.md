@@ -24,13 +24,13 @@ pip install -r requirements.txt
 ```
 NASA_API_KEY=<nasa_api_key>
 TELEGRAM_TOKEN=<telegram_bot_token>
-CHAT_ID=@<chat_id>
+TELEGRAM_CHAT_ID=@<chat_id>
 ``` 
 Для получения `NASA_API_KEY` необходимо сгенерировать ключ по ссылке [API.NASA](https://api.nasa.gov/). 
 
 Также необходимо создать Telegram-бота, если он ещё не создан, для получения `TELEGRAM_TOKEN`. Для этого нужно обратиться к [@BotFather](https://telegram.me/BotFather). Подробная инструкция по настройке и созданию бота приведена здесь - [Инструкция по созданию Telegram-бота](https://way23.ru/%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0-%D0%B2-telegram.html)
 
-`CHAT_ID` - ссылка на публичный Telegram-канал (в формате `@my_chanel`), в котором будут публиковаться фотографии.
+`TELEGRAM_CHAT_ID` - ссылка на публичный Telegram-канал (в формате `@my_chanel`), в котором будут публиковаться фотографии.
 
 **ВАЖНО!** Бот должен быть Администратором вышеуказанного Telegram-канала.
 
@@ -73,11 +73,11 @@ $python3 image_bot.py -i images/image_1 -id 2 @my_tel_ch.
 Запускается из терминала или командной строки.
 
 Принимает один аргумент: 
-* `--id`, `-i` - ID запуска, если не указан, то скачиваются фото последнего запуска
+* `--launch_id`, `-i` - ID запуска, если не указан, то скачиваются фото последнего запуска
 
 Пример запуска:
 ```bash
-$python3 fetch_spacex_images.py --id 5eb87d47ffd86e000604b38a
+$python3 fetch_spacex_images.py --launch_id 5eb87d47ffd86e000604b38a
 ```
 
 ### Вспомогательный скрипт `fetch_nasa_apod.py`
