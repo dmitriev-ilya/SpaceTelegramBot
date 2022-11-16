@@ -5,6 +5,7 @@ from image_bot import send_photo_to_chat
 import random
 import time
 import argparse
+from telegram.error import NetworkError
 
 
 if __name__ == '__main__':
@@ -30,7 +31,7 @@ if __name__ == '__main__':
         default=4
     )
     args = parser.parse_args()
-    sleep_time = args.sleep_time * 3600
+    sleep_time = float(args.sleep_time) * 3600
 
     images_path_list = []
     for address, dirs, files in os.walk(args.images_dir_path):
@@ -42,7 +43,12 @@ if __name__ == '__main__':
     	time.sleep(sleep_time)
 
     while True:
-    	random.shuffle(images_path_list)
-    	for image_path in images_path_list:
-    	    send_photo_to_chat(image_path, chat_id, bot_token)
-    	    time.sleep(sleep_time)
+        random.shuffle(images_path_list)
+        try:    
+            for image_path in images_path_list:
+        	    send_photo_to_chat(image_path, chat_id, bot_token)
+        	    time.sleep(sleep_time)
+        except NetworkError:
+            print('Connection lost. Trying to reconnecting')
+            time.sleep(2)
+            continue
