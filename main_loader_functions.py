@@ -3,7 +3,7 @@ from urllib.parse import urlparse
 from os.path import splitext
 
 
-def picture_loader(url, filename, params={"q": ""}):
+def load_picture(url, filename, params={"q": ""}):
     response = requests.get(url, params=params)
     response.raise_for_status()
     with open(filename, 'wb') as file:

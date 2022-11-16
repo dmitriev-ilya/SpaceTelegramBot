@@ -26,7 +26,7 @@ def fetch_nasa_epic(nasa_api_key):
         )
         
         filename = os.path.join('images', f'epic_nasa_{number}.jpeg')
-        main_loader_functions.picture_loader(image_url, filename, params)
+        main_loader_functions.load_picture(image_url, filename, params)
         print(f'Photo {number} is load')
     print("It's done!")
 

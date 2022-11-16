@@ -11,7 +11,7 @@ def fetch_spacex_launch(launch_id):
     if images_set:
         for number, image_url in enumerate(images_set, start=1):
             filename = os.path.join('images', f'spacex_{number}.jpeg')
-            main_loader_functions.picture_loader(image_url, filename)
+            main_loader_functions.load_picture(image_url, filename)
             print(f'Photo {number} is load')
         
         print("It's done!")
