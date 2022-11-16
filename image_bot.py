@@ -5,8 +5,9 @@ import argparse
 
 
 def send_photo_to_chat(image_path, chat_id, bot_token):
-	bot = telegram.Bot(token=bot_token)
-	bot.send_photo(chat_id=chat_id, photo=open(image_path, 'rb'))
+    bot = telegram.Bot(token=bot_token)
+    with open(image_path, 'rb') as image:
+        bot.send_photo(chat_id=chat_id, photo=image)
 
 
 if __name__ == '__main__':
