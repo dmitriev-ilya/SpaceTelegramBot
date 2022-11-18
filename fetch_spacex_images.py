@@ -4,6 +4,10 @@ import main_loader_functions
 import argparse
 
 
+class EmptyImagesSetError(Exception):
+    pass
+
+
 def fetch_spacex_launch(launch_id): 
     response = requests.get(f'https://api.spacexdata.com/v5/launches/{launch_id}')
     response.raise_for_status()
@@ -16,7 +20,7 @@ def fetch_spacex_launch(launch_id):
         
         print("It's done!")
     else:
-        raise Exception('No images in this launch')
+        raise EmptyImagesSetError('No images in this launch')
 
 
 if __name__ == '__main__':
