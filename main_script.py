@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 from image_bot import send_photo_to_chat
 import random
 import time
-import argparse
 from telegram.error import NetworkError
 
 
