@@ -27,10 +27,11 @@ if __name__ == '__main__':
         '-s',
         '--sleep_time', 
         help='время задержки публикации фото, в часах',
-        default=4
+        default=4,
+        type=float
     )
     args = parser.parse_args()
-    sleep_time = float(args.sleep_time) * 3600
+    sleep_time = args.sleep_time * 3600
 
     images_path_list = []
     for address, dirs, files in os.walk(args.images_dir_path):
