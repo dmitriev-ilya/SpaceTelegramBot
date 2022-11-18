@@ -38,16 +38,12 @@ if __name__ == '__main__':
         for name in files:
             images_path_list.append(os.path.join(address, name))
 
-    for image_path in images_path_list:
-    	send_photo_to_chat(image_path, chat_id, bot_token)
-    	time.sleep(sleep_time)
-
     while True:
-        random.shuffle(images_path_list)
-        try:    
+        try:
             for image_path in images_path_list:
         	    send_photo_to_chat(image_path, chat_id, bot_token)
         	    time.sleep(sleep_time)
+            random.shuffle(images_path_list)
         except NetworkError:
             print('Connection lost. Trying to reconnecting')
             time.sleep(2)
