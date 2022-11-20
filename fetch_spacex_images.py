@@ -13,10 +13,10 @@ class EmptyImagesSetError(Exception):
 def fetch_spacex_launch(launch_id):
     response = requests.get(f"https://api.spacexdata.com/v5/launches/{launch_id}")
     response.raise_for_status()
-    images_set = response.json()["links"]["flickr"]["original"]
-    if not images_set:
+    images_url = response.json()["links"]["flickr"]["original"]
+    if not images_url:
         raise EmptyImagesSetError("No images in this launch")
-    for number, image_url in enumerate(images_set, start=1):
+    for number, image_url in enumerate(images_url, start=1):
         filename = os.path.join("images", f"spacex_{number}.jpeg")
         main_loader_functions.load_picture(image_url, filename)
         print(f"Photo {number} is load")
