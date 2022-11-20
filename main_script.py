@@ -1,16 +1,17 @@
-import os
 import argparse
-from dotenv import load_dotenv
-from image_bot import send_photo_to_chat
+import os
 import random
 import time
+
+from dotenv import load_dotenv
 from telegram.error import NetworkError
 
+from image_bot import send_photo_to_chat
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     load_dotenv()
-    bot_token = os.environ['TELEGRAM_TOKEN']
-    chat_id = os.environ['TELEGRAM_CHAT_ID']
+    bot_token = os.environ["TELEGRAM_TOKEN"]
+    chat_id = os.environ["TELEGRAM_CHAT_ID"]
     parser = argparse.ArgumentParser(
         description="""Бот последовательно загружает фотографии в Telegram Chat
         из выбранной директории, с задержкой публикации на указанное время.
@@ -18,17 +19,17 @@ if __name__ == '__main__':
         Требует TELEGRAM_TOKEN и TELEGRAM_CHAT_ID, которые должны быть указаны в переменной .env"""
     )
     parser.add_argument(
-        '-i',
-        '--images_dir_path', 
-        help='путь к директории с изображениями',
-        default='images'
+        "-i",
+        "--images_dir_path",
+        help="путь к директории с изображениями",
+        default="images",
     )
     parser.add_argument(
-        '-s',
-        '--sleep_time', 
-        help='время задержки публикации фото, в часах',
+        "-s",
+        "--sleep_time",
+        help="время задержки публикации фото, в часах",
         default=4,
-        type=float
+        type=float,
     )
     args = parser.parse_args()
     sleep_time = args.sleep_time * 3600
@@ -41,10 +42,10 @@ if __name__ == '__main__':
     while True:
         try:
             for image_path in images_path_list:
-        	    send_photo_to_chat(image_path, chat_id, bot_token)
-        	    time.sleep(sleep_time)
+                send_photo_to_chat(image_path, chat_id, bot_token)
+                time.sleep(sleep_time)
             random.shuffle(images_path_list)
         except NetworkError:
-            print('Connection lost. Trying to reconnecting')
+            print("Connection lost. Trying to reconnecting")
             time.sleep(2)
             continue
