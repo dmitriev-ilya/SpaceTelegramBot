@@ -48,4 +48,3 @@ if __name__ == "__main__":
         except NetworkError:
             print("Connection lost. Trying to reconnecting")
             time.sleep(2)
-            continue
