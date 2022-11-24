@@ -34,17 +34,17 @@ if __name__ == "__main__":
     args = parser.parse_args()
     sleep_time = args.sleep_time * 3600
 
-    images_path_list = []
+    images_paths = []
     for address, dirs, files in os.walk(args.images_dir_path):
         for name in files:
-            images_path_list.append(os.path.join(address, name))
+            images_paths.append(os.path.join(address, name))
 
     while True:
         try:
-            for image_path in images_path_list:
+            for image_path in images_paths:
                 send_photo_to_chat(image_path, chat_id, bot_token)
                 time.sleep(sleep_time)
-            random.shuffle(images_path_list)
+            random.shuffle(images_paths)
         except NetworkError:
             print("Connection lost. Trying to reconnecting")
             time.sleep(2)
